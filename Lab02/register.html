@@ -1,0 +1,201 @@
+<!-- Thawee Konkeaw  ID: 6035247008-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script type="text/javascript">
+        function Validation() {  //Validation is a function Name it is perform on onClentClick Event
+            var errors = "";
+            errors += CheckName();
+
+            errors += CheckEmail();
+            errors += CheckPassword();
+            errors += CheckCnfPassword();
+            errors += CheckAge();
+            errors += CheckMobileNo();
+            if (errors != "") {
+                alert(errors);
+                return false;
+            }
+        }
+
+        //getElementById:เก็บค่าจาก client
+        // ตรวจสอบโดย exp.test(ค่าที่จะเทส)
+        function CheckName() {
+            //รับค่าจาก client
+            var name = document.getElementById('txtname');
+            //var exp = /^[a-zA-Z ]+$/
+            var exp = /^[ก-๙ ]+$/
+           //ถ้าไม่ได้กรอกข้อมูล
+            if(name.value=="")
+            {
+                return"กรุณากรอกชื่อ\n";
+            }
+        
+            //กรณีถูกต้องแล้ว
+            else if(exp.test(name.value))
+            {
+                return"ข้อมูลชื่อถูกแล้ว\n"
+            }
+            //ถ้าข้อมูลผิดเงื่อนไข
+            else
+            {
+                return "ข้อมูลชื่อไม่ถูกต้อง\n"
+            }
+
+        }
+
+        function CheckEmail() {
+           var email=document.getElementById('txtemail');
+           var exp=/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+
+           if(email.value=="")
+           {
+              return"กรุณากรอกอีเมล์\n";
+           }
+           else if (exp.test(email.value))
+           {
+              return"ข้อมูลอีเมล์ถูกแล้ว\n";
+           }
+           else
+           {
+              return"ข้อมูลอีเมล์ไม่ถูกต้อง\n";
+           }
+        }
+
+        function CheckAge() {
+           var age=document.getElementById('txtage');
+           if(age.value=="")
+           {
+              return"กรุณากรอกอายุ\n"
+           }
+           else if(age.value>=8)
+           {
+            return"ข้อมูลอายุถูกต้อง\n"
+           }
+           
+           else
+           {
+            return"ข้อมูลอายุต่ำกว่ากำหนด\n"
+           }
+        }
+
+        function CheckPassword() {
+          var password=document.getElementById('txtpassword');
+          //ภายในรหัส6ตัว ใส่อักขระภาษาอังกฤษทั้งหมดได้6ตัว,หรือใส่ตัวเลข(0-9)ได้6ตัว แต่อย่างน้อย1ตัว ต้องเป็นอักขระ
+          var exp=/^(?![0-9]{6})[0-9a-zA-Z]{6}$/
+
+          if(password.value=="")
+          {
+            return"กรุณากรอกพาสเวิร์ด\n";
+          }
+          else if(exp.test(password.value))
+          {
+            return"ข้อมูลพาสเวิร์ดถูกต้อง\n";
+          }
+          else
+          {
+            return"ข้อมูลพาสเวิร์ดไม่ถูกต้อง\n";
+          }
+        }
+
+        function CheckCnfPassword() {
+            var cnfpassword=document.getElementById('txtcnfpwd');
+            var password=document.getElementById('txtpassword');
+            
+            if(cnfpassword.value=="")
+
+          {
+            return"กรุณายืนยันพาสเวิร์ด\n";
+          }
+          else if(cnfpassword.value==password.value)
+           {
+             return"ข้อมูลยืนยันพาสเวิร์ดถูกต้อง\n";
+           }
+           else
+          {
+            return"ข้อมูลยืนยันพาสเวิร์ดไม่ถูกต้อง\n";
+          }
+        }
+
+        function CheckMobileNo() {
+           var MobileNo=document.getElementById('txtmobno');
+           var exp=/^[0]?[689]\d{8}$/
+           
+           if(MobileNo.value=="")
+          {
+            return"กรุณากรอกหมายเลขโทรศัพท์\n";
+          }
+          else if(exp.test(MobileNo.value))
+          {
+            return"หมายเลขโทรศัพท์ถูกต้อง\n";
+          }
+          else
+          {
+            return"หมายเลขโทรศัพท์ไม่ถูกต้อง\n";
+          }
+        }
+</script>
+     
+
+</head>
+
+<body>
+    <div>
+        <table>
+            <tr>
+                <td>Name:</td>
+                <td>
+                    <Input type="text" ID="txtname" runat="server"></Input type=“text”></td>
+            </tr>
+            <tr>
+                <td>Email
+                </td>
+                <td>
+                    <Input type="text" ID="txtemail" runat="server"></Input type=“text”></td>
+            </tr>
+            <tr>
+                <td>Age
+                </td>
+                <td>
+                    <Input type="text" ID="txtage" runat="server"></Input type=“text”></td>
+            </tr>
+            <tr>
+                <td>Password:
+                </td>
+                <td>
+                    <Input type="text" ID="txtpassword" runat="server"></Input type=“text”></td>
+            </tr>
+            <tr>
+                <td>Confirm Password
+                </td>
+                <td>
+                    <Input type="text" ID="txtcnfpwd" runat="server"></Input type=“text”></td>
+            </tr>
+            <tr>
+                <td>Mobile No:
+                </td>
+                <td>
+                    <Input type="text" ID="txtmobno" runat="server"></Input type=“text”></td>
+            </tr>
+            <tr> 
+                    <td>Thawee Konkeaw 6035247008 </td>
+                    
+            </tr>   
+            
+            
+            <tr>
+                <td></td>
+                <td>
+                    <button type="button" ID="btnsave" onclick="return Validation();">ลงทะเบียน</button></td>
+            </tr>
+            
+            </table>
+
+    </div>
+
+</body>
+</html>
